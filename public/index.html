@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>AYT04 - YouTube Subscriptions</title>
+    <meta name="description" content="rssTea is a premium YouTube Subscriptions & audio web viewer formatted to mimic the official mobile app experience."/>
+    
+    <!-- Shortcut Favicons -->
+    <link rel="shortcut icon" href="favicon.ico"> 
+    <link rel="icon" href="favicon.png">
+    <link rel="manifest" href="manifest.json" />
+    
+    <!-- iOS App Integration Support -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="YouTube" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+    <!-- Official YouTube Fonts & Material Symbols Styling -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="theme.css" type="text/css">
+</head>
+<body>
+
+    <!-- Premium Mobile Top Navigation Bar -->
+    <div id="yt-mobile-header">
+        <div class="header-left">
+            <span class="yt-logo-icon">play_circle</span>
+            <span class="yt-logo-text">AYT04</span>
+        </div>
+        <div class="header-right">
+            <button class="header-action-btn"><span class="material-symbols-outlined">cast</span></button>
+            <button class="header-action-btn badge-btn">
+                <span class="material-symbols-outlined">notifications</span>
+                <span class="badge-dot"></span>
+            </button>
+            <button class="header-action-btn" id="search-trigger"><span class="material-symbols-outlined">search</span></button>
+            <div class="profile-avatar-circle">A</div>
+        </div>
+    </div>
+
+    <!-- Main Container Grid -->
+    <div id="pcwrap">
+        
+        <!-- Channels & Subscriptions Horizontal Sliding Panel -->
+        <div id="filter">
+            <div class="pclogo">
+                <span class="logo-red-dot"></span> Subscriptions
+            </div>
+            
+            <!-- Hide the legacy dropdown selection but preserve its logic for DOM updates -->
+            <select name="changechannel" style="display:none;">
+                <option value="All">All Channels</option><option value="SomeOrdinaryGamers on Odysee">SomeOrdinaryGamers on Odysee</option><option value="Brodie Robertson | Linux Tips &amp; Tricks on Odysee">Brodie Robertson | Linux Tips &amp; Tricks on Odysee</option><option value="bashbunni on Odysee">bashbunni on Odysee</option><option value="Cyb3rMaddy">Cyb3rMaddy</option>
+            </select>
+            
+            <!-- Beautiful dynamic circular channel list container -->
+            <div id="filters-bar">
+                <!-- Javascript will dynamically build YouTube channel circles here -->
+            </div>
+            
+            <!-- YouTube Sub-Bar Category Filter Chips -->
+            <div id="category-chips-row">
+                <span class="tab active">All</span>
+                <span class="tab">Videos</span>
+                <span class="tab">Podcasts</span>
+                <span class="tab">Saved</span>
+            </div>
+        </div>
+
+        <!-- Video Subscription Feed Stack -->
+        <div id="wrap">
+            <div class="post" data-channel="SomeOrdinaryGamers on Odysee" data-ts="1784678187" data-audio="0">  <div class="yt-thumbnail-wrapper">    <img class="yt-thumbnail" src="https://thumbnails.lbry.com/Voo6xcQ7jx8" alt="addressing the cartel allegations..." loading="lazy" />    <span class="yt-badge">VIDEO</span>  </div>  <div class="yt-details">    <div class="yt-avatar-container">      <img class="yt-channel-avatar" src="https://thumbnails.lbry.com/Voo6xcQ7jx8" alt="SomeOrdinaryGamers on Odysee" onerror="this.src='https://s2.googleusercontent.com/s2/favicons?domain=youtube.com&sz=64'" />    </div>    <div class="yt-info">      <h3 class="yt-title"><a href="https://odysee.com/addressing-the-cartel-allegations...:1befcc7ada4549ca71e9e1accbf46f19d504b7e4" target="_blank">addressing the cartel allegations...</a></h3>      <div class="yt-metadata">        <span class="yt-channel-name">SomeOrdinaryGamers on Odysee</span>        <span class="yt-dot">&bull;</span>        <span class="yt-date">Jul 21, 2026</span>      </div>    </div>    <button class="yt-more-btn"><span class="material-symbols-outlined">more_vert</span></button>  </div></div><div class="post" data-channel="Brodie Robertson | Linux Tips &amp; Tricks on Odysee" data-ts="1784655024" data-audio="0">  <div class="yt-thumbnail-wrapper">    <img class="yt-thumbnail" src="https://thumbnails.lbry.com/c7dY-YulDEg" alt="Valve&#039;s Steam Frame Is Reinventing Arch Linux On ARM" loading="lazy" />    <span class="yt-badge">VIDEO</span>  </div>  <div class="yt-details">    <div class="yt-avatar-container">      <img class="yt-channel-avatar" src="https://thumbnails.lbry.com/c7dY-YulDEg" alt="Brodie Robertson | Linux Tips &amp; Tricks on Odysee" onerror="this.src='https://s2.googleusercontent.com/s2/favicons?domain=youtube.com&sz=64'" />    </div>    <div class="yt-info">      <h3 class="yt-title"><a href="https://odysee.com/valve%27s-steam-frame-is-reinventing-arch:c8b7fcc93a25ab8f6d578d80b4f72c414ebeb98d" target="_blank">Valve&#039;s Steam Frame Is Reinventing Arch Linux On ARM</a></h3>      <div class="yt-metadata">        <span class="yt-channel-name">Brodie Robertson | Linux Tips &amp; Tricks on Odysee</span>        <span class="yt-dot">&bull;</span>        <span class="yt-date">Jul 21, 2026</span>      </div>    </div>    <button class="yt-more-btn"><span class="material-symbols-outlined">more_vert</span></button>  </div></div><div class="post" data-channel="SomeOrdinaryGamers on Odysee" data-ts="1784591542" data-audio="0">  <div class="yt-thumbnail-wrapper">    <img class="yt-thumbnail" src="https://thumbnails.lbry.com/2a1lbYggass" alt="The Flock Cameras Are Being Destroyed :)" loading="lazy" />    <span class="yt-badge">VIDEO</span>  </div>  <div class="yt-details">    <div class="yt-avatar-container">      <img class="yt-channel-avatar" src="https://thumbnails.lbry.com/2a1lbYggass" alt="SomeOrdinaryGamers on Odysee" onerror="this.src='https://s2.googleusercontent.com/s2/favicons?domain=youtube.com&sz=64'" />    </div>    <div class="yt-info">      <h3 class="yt-title"><a href="https://odysee.com/the-flock-cameras-are-being-destroyed-%29:480f07b15360f8d3e61a39dab0df068328d87e96" target="_blank">The Flock Cameras Are Being Destroyed :)</a></h3>      <div class="yt-metadata">        <span class="yt-channel-name">SomeOrdinaryGamers on Odysee</span>        <span class="yt-dot">&bull;</span>        <span class="yt-date">Jul 20, 2026</span>      </div>    </div>    <button class="yt-more-btn"><span class="material-symbols-outlined">more_vert</span></button>  </div></div><div class="post" data-channel="Brodie Robertson | Linux Tips &amp; Tricks on Odysee" data-ts="1784568601" data-audio="0">  <div class="yt-thumbnail-wrapper">    <img class="yt-thumbnail" src="https://thumbnails.lbry.com/DF47ErcoO-Y" alt="Linux Is About A Certain Kind Of Choice" loading="lazy" />    <span class="yt-badge">VIDEO</span>  </div>  <div class="yt-details">    <div class="yt-avatar-container">      <img class="yt-channel-avatar" src="https://thumbnails.lbry.com/DF47ErcoO-Y" alt="Brodie Robertson | Linux Tips &amp; Tricks on Odysee" onerror="this.src='https://s2.googleusercontent.com/s2/favicons?domain=youtube.com&sz=64'" />    </div>    <div class="yt-info">      <h3 class="yt-title"><a href="https://odysee.com/linux-is-about-a-certain-kind-of-choice:1a28df7c40d4c938207fd291c664a0a3da7f395a" target="_blank">Linux Is About A Certain Kind Of Choice</a></h3>      <div class="yt-metadata">        <span class="yt-channel-name">Brodie Robertson | Linux Tips &amp; Tricks on Odysee</span>        <span class="yt-dot">&bull;</span>        <span class="yt-date">Jul 20, 2026</span>      </div>    </div>    <button class="yt-more-btn"><span class="material-symbols-outlined">more_vert</span></button>  </div></div><div class="post" data-channel="SomeOrdinaryGamers on Odysee" data-ts="1784504389" data-audio="0">  <div class="yt-thumbnail-wrapper">    <img class="yt-thumbnail" src="https://thumbnails.lbry.com/J3yAhK6eQYI" alt="Screw Playstation, I Made The MutaStation..." loading="lazy" />    <span class="yt-badge">VIDEO</span>  </div>  <div class="yt-details">    <div class="yt-avatar-container">      <img class="yt-channel-avatar" src="https://thumbnails.lbry.com/J3yAhK6eQYI" alt="SomeOrdinaryGamers on Odysee" onerror="this.src='https://s2.googleusercontent.com/s2/favicons?domain=youtube.com&sz=64'" />    </div>    <div class="yt-info">      <h3 class="yt-title"><a href="https://odysee.com/screw-playstation%2C-i-made-the:f64b183a178cbac7c2448435efa9ab3b660d0134" target="_blank">Screw Playstation, I Made The MutaStation...</a></h3>      <div class="yt-metadata">        <span class="yt-channel-name">SomeOrdinaryGamers on Odysee</span>        <span class="yt-dot">&bull;</span>        <span class="yt-date">Jul 19, 2026</span>      </div>    </div>    <button class="yt-more-btn"><span class="material-symbols-outlined">more_vert</span></button>  </div></div><div class="post" data-channel="Brodie Robertson | Linux Tips &amp; Tricks on Odysee" data-ts="1784482231" data-audio="0">  <div class="yt-thumbnail-wrapper">    <img class="yt-thumbnail" src="https://thumbnails.lbry.com/hE6wWn8JNjQ" alt="Can Modern Linux Revive An Old PC?" loading="lazy" />    <span class="yt-badge">VIDEO</span>  </div>  <div class="yt-details">    <div class="yt-avatar-container">      <img class="yt-channel-avatar" src="https://thumbnails.lbry.com/hE6wWn8JNjQ" alt="Brodie Robertson | Linux Tips &amp; Tricks on Odysee" onerror="this.src='https://s2.googleusercontent.com/s2/favicons?domain=youtube.com&sz=64'" />    </div>    <div class="yt-info">      <h3 class="yt-title"><a href="https://odysee.com/can-modern-linux-revive-an-old-pc:86321511867f1fc2156cfa92b77bded12c21ad32" target="_blank">Can Modern Linux Revive An Old PC?</a></h3>      <div class="yt-metadata">        <span class="yt-channel-name">Brodie Robertson | Linux Tips &amp; Tricks on Odysee</span>        <span class="yt-dot">&bull;</span>        <span class="yt-date">Jul 19, 2026</span>      </div>    </div>    <button class="yt-more-btn"><span class="material-symbols-outlined">more_vert</span></button>  </div></div><div class="post" data-channel="SomeOrdinaryGamers on Odysee" data-ts="1784419755" data-audio="0">  <div class="yt-thumbnail-wrapper">    <img class="yt-thumbnail" src="https://thumbnails.lbry.com/GXTlIellMnU" alt="Google Is Locking Down Your Android Phone..." loading="lazy" />    <span class="yt-badge">VIDEO</span>  </div>  <div class="yt-details">    <div class="yt-avatar-container">      <img class="yt-channel-avatar" src="https://thumbnails.lbry.com/GXTlIellMnU" alt="SomeOrdinaryGamers on Odysee" onerror="this.src='https://s2.googleusercontent.com/s2/favicons?domain=youtube.com&sz=64'" />    </div>    <div class="yt-info">      <h3 class="yt-title"><a href="https://odysee.com/google-is-locking-down-your-android:168d270279e3fe98eb0ccc1b762bee1782cb9e2a" target="_blank">Google Is Locking Down Your Android Phone...</a></h3>      <div class="yt-metadata">        <span class="yt-channel-name">SomeOrdinaryGamers on Odysee</span>        <span class="yt-dot">&bull;</span>        <span class="yt-date">Jul 19, 2026</span>      </div>    </div>    <button class="yt-more-btn"><span class="material-symbols-outlined">more_vert</span></button>  </div></div><div class="post" data-channel="Brodie Robertson | Linux Tips &amp; Tricks on Odysee" data-ts="1784395830" data-audio="0">  <div class="yt-thumbnail-wrapper">    <img class="yt-thumbnail" src="https://thumbnails.lbry.com/u2nWI3FOM58" alt="End Of Debian Linux 32 Bit x86 Has Come" loading="lazy" />    <span class="yt-badge">VIDEO</span>  </div>  <div class="yt-details">    <div class="yt-avatar-container">      <img class="yt-channel-avatar" src="https://thumbnails.lbry.com/u2nWI3FOM58" alt="Brodie Robertson | Linux Tips &amp; Tricks on Odysee" onerror="this.src='https://s2.googleusercontent.com/s2/favicons?domain=youtube.com&sz=64'" />    </div>    <div class="yt-info">      <h3 class="yt-title"><a href="https://odysee.com/end-of-debian-linux-32-bit-x86-has-come:006578276496a987ce661e0f24f249ae1b57700e" target="_blank">End Of Debian Linux 32 Bit x86 Has Come</a></h3>      <div class="yt-metadata">        <span class="yt-channel-name">Brodie Robertson | Linux Tips &amp; Tricks on Odysee</span>        <span class="yt-dot">&bull;</span>        <span class="yt-date">Jul 18, 2026</span>      </div>    </div>    <button class="yt-more-btn"><span class="material-symbols-outlined">more_vert</span></button>  </div></div><div class="post" data-channel="bashbunni on Odysee" data-ts="1784293201" data-audio="0">  <div class="yt-thumbnail-wrapper">    <img class="yt-thumbnail" src="https://thumbnails.lbry.com/bcWee-m7CXA" alt="positive mindset meets burnout #burnoutrecovery #burnout #worklifebalance" loading="lazy" />    <span class="yt-badge">VIDEO</span>  </div>  <div class="yt-details">    <div class="yt-avatar-container">      <img class="yt-channel-avatar" src="https://thumbnails.lbry.com/bcWee-m7CXA" alt="bashbunni on Odysee" onerror="this.src='https://s2.googleusercontent.com/s2/favicons?domain=youtube.com&sz=64'" />    </div>    <div class="yt-info">      <h3 class="yt-title"><a href="https://odysee.com/positive-mindset-meets-burnout:8f471a6915223c280e7aa402a22ae19dc659a378" target="_blank">positive mindset meets burnout #burnoutrecovery #burnout #worklifebalance</a></h3>      <div class="yt-metadata">        <span class="yt-channel-name">bashbunni on Odysee</span>        <span class="yt-dot">&bull;</span>        <span class="yt-date">Jul 17, 2026</span>      </div>    </div>    <button class="yt-more-btn"><span class="material-symbols-outlined">more_vert</span></button>  </div></div><div class="post" data-channel="SomeOrdinaryGamers on Odysee" data-ts="1784246289" data-audio="0">  <div class="yt-thumbnail-wrapper">    <img class="yt-thumbnail" src="https://thumbnails.lbry.com/A8seLprk9K8" alt="Win" loading="lazy" />    <span class="yt-badge">VIDEO</span>  </div>  <div class="yt-details">    <div class="yt-avatar-container">      <img class="yt-channel-avatar" src="https://thumbnails.lbry.com/A8seLprk9K8" alt="SomeOrdinaryGamers on Odysee" onerror="this.src='https://s2.googleusercontent.com/s2/favicons?domain=youtube.com&sz=64'" />    </div>    <div class="yt-info">      <h3 class="yt-title"><a href="https://odysee.com/win:ee820ca49bbb020fb27aba09b2a3c98b89b025cf" target="_blank">Win</a></h3>      <div class="yt-metadata">        <span class="yt-channel-name">SomeOrdinaryGamers on Odysee</span>        <span class="yt-dot">&bull;</span>        <span class="yt-date">Jul 16, 2026</span>      </div>    </div>    <button class="yt-more-btn"><span class="material-symbols-outlined">more_vert</span></button>  </div></div><div class="post" data-channel="Brodie Robertson | Linux Tips &amp; Tricks on Odysee" data-ts="1784223013" data-audio="0">  <div class="yt-thumbnail-wrapper">    <img class="yt-thumbnail" src="https://thumbnails.lbry.com/_Okkcg-lsXI" alt="Linus Torvalds Says The Linux Kernel Is Not &quot;Anti-AI&quot;" loading="lazy" />    <span class="yt-badge">VIDEO</span>  </div>  <div class="yt-details">    <div class="yt-avatar-container">      <img class="yt-channel-avatar" src="https://thumbnails.lbry.com/_Okkcg-lsXI" alt="Brodie Robertson | Linux Tips &amp; Tricks on Odysee" onerror="this.src='https://s2.googleusercontent.com/s2/favicons?domain=youtube.com&sz=64'" />    </div>    <div class="yt-info">      <h3 class="yt-title"><a href="https://odysee.com/linus-torvalds-says-the-linux-kernel-is:e2d396fdef56f55758920f2a951a9770b611aebd" target="_blank">Linus Torvalds Says The Linux Kernel Is Not &quot;Anti-AI&quot;</a></h3>      <div class="yt-metadata">        <span class="yt-channel-name">Brodie Robertson | Linux Tips &amp; Tricks on Odysee</span>        <span class="yt-dot">&bull;</span>        <span class="yt-date">Jul 16, 2026</span>      </div>    </div>    <button class="yt-more-btn"><span class="material-symbols-outlined">more_vert</span></button>  </div></div><div class="post" data-channel="bashbunni on Odysee" data-ts="1784206828" data-audio="0">  <div class="yt-thumbnail-wrapper">    <img class="yt-thumbnail" src="https://thumbnails.lbry.com/5xEYQ7VsTLk" alt="the precursor to burnout #burnout #mentalhealth #worklifebalance" loading="lazy" />    <span class="yt-badge">VIDEO</span>  </div>  <div class="yt-details">    <div class="yt-avatar-container">      <img class="yt-channel-avatar" src="https://thumbnails.lbry.com/5xEYQ7VsTLk" alt="bashbunni on Odysee" onerror="this.src='https://s2.googleusercontent.com/s2/favicons?domain=youtube.com&sz=64'" />    </div>    <div class="yt-info">      <h3 class="yt-title"><a href="https://odysee.com/the-precursor-to-burnout-burnout:dad23e86992315ad9aa36556d90c0a21506a5327" target="_blank">the precursor to burnout #burnout #mentalhealth #worklifebalance</a></h3>      <div class="yt-metadata">        <span class="yt-channel-name">bashbunni on Odysee</span>        <span class="yt-dot">&bull;</span>        <span class="yt-date">Jul 16, 2026</span>      </div>    </div>    <button class="yt-more-btn"><span class="material-symbols-outlined">more_vert</span></button>  </div></div><div class="post" data-channel="Cyb3rMaddy" data-ts="1784130886" data-audio="0">  <div class="yt-thumbnail-wrapper">    <img class="yt-thumbnail" src="https://i2.ytimg.com/vi/mvsgrhS5bV8/hqdefault.jpg" alt="The terrifying reality of the internet" loading="lazy" />    <span class="yt-badge">VIDEO</span>  </div>  <div class="yt-details">    <div class="yt-avatar-container">      <img class="yt-channel-avatar" src="https://i2.ytimg.com/vi/mvsgrhS5bV8/hqdefault.jpg" alt="Cyb3rMaddy" onerror="this.src='https://s2.googleusercontent.com/s2/favicons?domain=youtube.com&sz=64'" />    </div>    <div class="yt-info">      <h3 class="yt-title"><a href="https://www.youtube.com/watch?v=mvsgrhS5bV8" target="_blank">The terrifying reality of the internet</a></h3>      <div class="yt-metadata">        <span class="yt-channel-name">Cyb3rMaddy</span>        <span class="yt-dot">&bull;</span>        <span class="yt-date">Jul 15, 2026</span>      </div>    </div>    <button class="yt-more-btn"><span class="material-symbols-outlined">more_vert</span></button>  </div></div><div class="post" data-channel="bashbunni on Odysee" data-ts="1784034006" data-audio="0">  <div class="yt-thumbnail-wrapper">    <img class="yt-thumbnail" src="https://thumbnails.lbry.com/gHelB4kZS14" alt="grandma was right #burnout #productivity #health" loading="lazy" />    <span class="yt-badge">VIDEO</span>  </div>  <div class="yt-details">    <div class="yt-avatar-container">      <img class="yt-channel-avatar" src="https://thumbnails.lbry.com/gHelB4kZS14" alt="bashbunni on Odysee" onerror="this.src='https://s2.googleusercontent.com/s2/favicons?domain=youtube.com&sz=64'" />    </div>    <div class="yt-info">      <h3 class="yt-title"><a href="https://odysee.com/grandma-was-right-burnout-productivity:ab47eb08c1746aaf764e9d66cb494393e3bde629" target="_blank">grandma was right #burnout #productivity #health</a></h3>      <div class="yt-metadata">        <span class="yt-channel-name">bashbunni on Odysee</span>        <span class="yt-dot">&bull;</span>        <span class="yt-date">Jul 14, 2026</span>      </div>    </div>    <button class="yt-more-btn"><span class="material-symbols-outlined">more_vert</span></button>  </div></div><div class="post" data-channel="bashbunni on Odysee" data-ts="1783861213" data-audio="0">  <div class="yt-thumbnail-wrapper">    <img class="yt-thumbnail" src="https://thumbnails.lbry.com/294bntqkApE" alt="Stop ignoring the signs of burnout" loading="lazy" />    <span class="yt-badge">VIDEO</span>  </div>  <div class="yt-details">    <div class="yt-avatar-container">      <img class="yt-channel-avatar" src="https://thumbnails.lbry.com/294bntqkApE" alt="bashbunni on Odysee" onerror="this.src='https://s2.googleusercontent.com/s2/favicons?domain=youtube.com&sz=64'" />    </div>    <div class="yt-info">      <h3 class="yt-title"><a href="https://odysee.com/stop-ignoring-the-signs-of-burnout:f3e4b86612195a574fe6859cd5f2691f4485de4c" target="_blank">Stop ignoring the signs of burnout</a></h3>      <div class="yt-metadata">        <span class="yt-channel-name">bashbunni on Odysee</span>        <span class="yt-dot">&bull;</span>        <span class="yt-date">Jul 12, 2026</span>      </div>    </div>    <button class="yt-more-btn"><span class="material-symbols-outlined">more_vert</span></button>  </div></div><div class="post" data-channel="bashbunni on Odysee" data-ts="1783774802" data-audio="0">  <div class="yt-thumbnail-wrapper">    <img class="yt-thumbnail" src="https://thumbnails.lbry.com/ZN11FGtRAqo" alt="you don&#039;t need to give up your precious vim keybinds for emacs #emacs #bashbunni" loading="lazy" />    <span class="yt-badge">VIDEO</span>  </div>  <div class="yt-details">    <div class="yt-avatar-container">      <img class="yt-channel-avatar" src="https://thumbnails.lbry.com/ZN11FGtRAqo" alt="bashbunni on Odysee" onerror="this.src='https://s2.googleusercontent.com/s2/favicons?domain=youtube.com&sz=64'" />    </div>    <div class="yt-info">      <h3 class="yt-title"><a href="https://odysee.com/you-don%27t-need-to-give-up-your-precious:440563c4d534e5464187f3f4a36c3f553a2cab8c" target="_blank">you don&#039;t need to give up your precious vim keybinds for emacs #emacs #bashbunni</a></h3>      <div class="yt-metadata">        <span class="yt-channel-name">bashbunni on Odysee</span>        <span class="yt-dot">&bull;</span>        <span class="yt-date">Jul 11, 2026</span>      </div>    </div>    <button class="yt-more-btn"><span class="material-symbols-outlined">more_vert</span></button>  </div></div><div class="post" data-channel="Cyb3rMaddy" data-ts="1782928836" data-audio="0">  <div class="yt-thumbnail-wrapper">    <img class="yt-thumbnail" src="https://i3.ytimg.com/vi/RuqQR_R-dEQ/hqdefault.jpg" alt="I Investigated a Temu Camera. Something Is Off." loading="lazy" />    <span class="yt-badge">VIDEO</span>  </div>  <div class="yt-details">    <div class="yt-avatar-container">      <img class="yt-channel-avatar" src="https://i3.ytimg.com/vi/RuqQR_R-dEQ/hqdefault.jpg" alt="Cyb3rMaddy" onerror="this.src='https://s2.googleusercontent.com/s2/favicons?domain=youtube.com&sz=64'" />    </div>    <div class="yt-info">      <h3 class="yt-title"><a href="https://www.youtube.com/watch?v=RuqQR_R-dEQ" target="_blank">I Investigated a Temu Camera. Something Is Off.</a></h3>      <div class="yt-metadata">        <span class="yt-channel-name">Cyb3rMaddy</span>        <span class="yt-dot">&bull;</span>        <span class="yt-date">Jul 01, 2026</span>      </div>    </div>    <button class="yt-more-btn"><span class="material-symbols-outlined">more_vert</span></button>  </div></div><div class="post" data-channel="Cyb3rMaddy" data-ts="1782676254" data-audio="0">  <div class="yt-thumbnail-wrapper">    <img class="yt-thumbnail" src="https://i4.ytimg.com/vi/Gz5S7reCmVo/hqdefault.jpg" alt="WiFI Surveillance!" loading="lazy" />    <span class="yt-badge">VIDEO</span>  </div>  <div class="yt-details">    <div class="yt-avatar-container">      <img class="yt-channel-avatar" src="https://i4.ytimg.com/vi/Gz5S7reCmVo/hqdefault.jpg" alt="Cyb3rMaddy" onerror="this.src='https://s2.googleusercontent.com/s2/favicons?domain=youtube.com&sz=64'" />    </div>    <div class="yt-info">      <h3 class="yt-title"><a href="https://www.youtube.com/shorts/Gz5S7reCmVo" target="_blank">WiFI Surveillance!</a></h3>      <div class="yt-metadata">        <span class="yt-channel-name">Cyb3rMaddy</span>        <span class="yt-dot">&bull;</span>        <span class="yt-date">Jun 28, 2026</span>      </div>    </div>    <button class="yt-more-btn"><span class="material-symbols-outlined">more_vert</span></button>  </div></div><div class="post" data-channel="Cyb3rMaddy" data-ts="1782579964" data-audio="0">  <div class="yt-thumbnail-wrapper">    <img class="yt-thumbnail" src="https://i4.ytimg.com/vi/crAIaTNMcAc/hqdefault.jpg" alt="Internet Surveillance Explained" loading="lazy" />    <span class="yt-badge">VIDEO</span>  </div>  <div class="yt-details">    <div class="yt-avatar-container">      <img class="yt-channel-avatar" src="https://i4.ytimg.com/vi/crAIaTNMcAc/hqdefault.jpg" alt="Cyb3rMaddy" onerror="this.src='https://s2.googleusercontent.com/s2/favicons?domain=youtube.com&sz=64'" />    </div>    <div class="yt-info">      <h3 class="yt-title"><a href="https://www.youtube.com/shorts/crAIaTNMcAc" target="_blank">Internet Surveillance Explained</a></h3>      <div class="yt-metadata">        <span class="yt-channel-name">Cyb3rMaddy</span>        <span class="yt-dot">&bull;</span>        <span class="yt-date">Jun 27, 2026</span>      </div>    </div>    <button class="yt-more-btn"><span class="material-symbols-outlined">more_vert</span></button>  </div></div><div class="post" data-channel="Cyb3rMaddy" data-ts="1781883026" data-audio="0">  <div class="yt-thumbnail-wrapper">    <img class="yt-thumbnail" src="https://i4.ytimg.com/vi/_KpMZfO_Se0/hqdefault.jpg" alt="Every Ad You See Is Actually Police Surveillance" loading="lazy" />    <span class="yt-badge">VIDEO</span>  </div>  <div class="yt-details">    <div class="yt-avatar-container">      <img class="yt-channel-avatar" src="https://i4.ytimg.com/vi/_KpMZfO_Se0/hqdefault.jpg" alt="Cyb3rMaddy" onerror="this.src='https://s2.googleusercontent.com/s2/favicons?domain=youtube.com&sz=64'" />    </div>    <div class="yt-info">      <h3 class="yt-title"><a href="https://www.youtube.com/watch?v=_KpMZfO_Se0" target="_blank">Every Ad You See Is Actually Police Surveillance</a></h3>      <div class="yt-metadata">        <span class="yt-channel-name">Cyb3rMaddy</span>        <span class="yt-dot">&bull;</span>        <span class="yt-date">Jun 19, 2026</span>      </div>    </div>    <button class="yt-more-btn"><span class="material-symbols-outlined">more_vert</span></button>  </div></div>
+        </div>
+
+    </div>
+
+    <!-- YouTube Premium Backdrop-blurred Floating Mini Player -->
+    <div id="floating_player">
+        <!-- Thin red line timeline bar indicating play state -->
+        <div id="mini-progress-track">
+            <div id="mini-progress-fill" style="width: 0%;"></div>
+        </div>
+        
+        <div class="player_meta">
+            <div class="player-left">
+                <!-- Thumbnail of current track inside player -->
+                <div id="player-thumb-container">
+                    <img id="player-current-thumb" src="favicon.png" alt="" />
+                    <span class="material-symbols-outlined music-note-icon">music_note</span>
+                </div>
+                <div class="player-text-info">
+                    <span id="title">Not Playing</span>
+                    <span id="player-subtitle">Select a podcast to begin</span>
+                </div>
+            </div>
+            
+            <div class="player-controls">
+                <button id="speed" title="Playback Speed">1x</button>
+                <button id="plus30" title="Skip Forward 30 Seconds">+30s</button>
+                <button id="playpausebutton" title="Play/Pause">Play</button>
+            </div>
+        </div>
+
+        <div id="timeline_wrap" style="display: none;">
+            <span id="current_time">00:00</span>
+            <span id="timeline">
+                <input type="range" id="seekbar" min="0" max="100" step="0.1" value="0">
+            </span>
+            <span id="duration">00:00</span>
+        </div>
+    </div>
+
+    <!-- Authentic Fixed YouTube Mobile Bottom Navigation Bar -->
+    <div id="yt-bottom-navigation">
+        <a href="#" class="nav-item">
+            <span class="material-symbols-outlined">home</span>
+            <span class="nav-label">Home</span>
+        </a>
+        <a href="#" class="nav-item">
+            <span class="material-symbols-outlined">bolt</span>
+            <span class="nav-label">Shorts</span>
+        </a>
+        <a href="#" class="nav-item active">
+            <span class="material-symbols-outlined icon-fill">subscriptions</span>
+            <span class="nav-label">Subscriptions</span>
+        </a>
+        <a href="#" class="nav-item">
+            <span class="material-symbols-outlined">video_library</span>
+            <span class="nav-label">You</span>
+        </a>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tabs = document.querySelectorAll('.tab');
+        const posts = document.querySelectorAll('.post');
+        const select = document.querySelector('select[name="changechannel"]');
+        let selectedChannel = 'All';
+
+        // Legacy Select compatibility listener
+        if (select) {
+            select.addEventListener('change', () => {
+                selectedChannel = select.value;
+                posts.forEach(post => {
+                    const channel = post.getAttribute('data-channel');
+                    if (selectedChannel === 'All' || channel === selectedChannel) {
+                        post.style.display = 'flex';
+                    } else {
+                        post.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        // Dynamically build Horizontal Channel Filter circles row mimicking Subscriptions tab
+        function buildDynamicChannels() {
+            const filtersBar = document.getElementById('filters-bar');
+            if (!filtersBar || !select) return;
+
+            const channelsRow = document.createElement('div');
+            channelsRow.className = 'yt-channel-row';
+
+            // Loop through select options generated by PHP
+            const options = Array.from(select.options);
+            options.forEach((opt, idx) => {
+                const val = opt.value;
+                const isAll = val === 'All';
+
+                const item = document.createElement('div');
+                item.className = `yt-channel-item ${isAll ? 'active' : ''}`;
+                item.setAttribute('data-value', val);
+
+                // Find a matching post thumbnail to use as channel avatar fallback
+                let avatarHtml = '';
+                if (isAll) {
+                    avatarHtml = `<span class="material-symbols-outlined yt-all-icon">compass_calibration</span>`;
+                } else {
+                    const matchedPost = document.querySelector(`.post[data-channel="${val}"]`);
+                    const postImg = matchedPost ? matchedPost.querySelector('.yt-channel-avatar')?.src : '';
+                    if (postImg) {
+                        avatarHtml = `<img src="https://avatars.githubusercontent.com/u/153463910?v=4" alt="Alt for now" />`;
+                    } else {
+                        const letter = val.charAt(0).toUpperCase();
+                        avatarHtml = `<div class="yt-avatar-fallback">${letter}</div>`;
+                    }
+                }
+
+                // Simulate high-fidelity notification dots on subscriptions
+                const hasUpdates = !isAll && (idx % 2 === 0);
+                const updateDot = hasUpdates ? `<span class="yt-channel-dot"></span>` : '';
+
+                item.innerHTML = `
+                    <div class="yt-channel-circle">
+                        ${avatarHtml}
+                        ${updateDot}
+                    </div>
+                    <span class="yt-channel-label">${isAll ? 'All' : opt.text}</span>
+                `;
+
+                // Channel Circle tap/click handler
+                item.addEventListener('click', () => {
+                    document.querySelectorAll('.yt-channel-item').forEach(el => el.classList.remove('active'));
+                    item.classList.add('active');
+
+                    // Filter posts via select component
+                    select.value = val;
+                    select.dispatchEvent(new Event('change'));
+
+                    // Reset Category chips to all
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabs[0].classList.add('active');
+
+                    // Scroll category chip bar cleanly
+                    item.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                });
+
+                channelsRow.appendChild(item);
+            });
+
+            filtersBar.innerHTML = '';
+            filtersBar.appendChild(channelsRow);
+        }
+
+        buildDynamicChannels();
+
+        // Sub-Bar Category tabs filter logic (All, Videos, Podcasts)
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                const filterText = tab.textContent.trim();
+                posts.forEach(post => {
+                    const isAudio = parseInt(post.getAttribute('data-audio')) === 1;
+                    const channel = post.getAttribute('data-channel');
+
+                    // Ensure we respect current channel selection in select too
+                    const currentCh = select ? select.value : 'All';
+                    const matchesCh = (currentCh === 'All' || channel === currentCh);
+
+                    if (matchesCh) {
+                        if (filterText === 'All') {
+                            post.style.display = 'flex';
+                        } else if (filterText === 'Videos' && !isAudio) {
+                            post.style.display = 'flex';
+                        } else if (filterText === 'Podcasts' && isAudio) {
+                            post.style.display = 'flex';
+                        } else if (filterText === 'Saved') {
+                            // Mock saved items (simulate features)
+                            post.style.display = (post.getAttribute('data-ts') % 2 === 0) ? 'flex' : 'none';
+                        } else {
+                            post.style.display = 'none';
+                        }
+                    } else {
+                        post.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // iOS Startup Splash Image creation dynamically using PWA variables
+        const deviceWidth = screen.width;
+        const deviceHeight = screen.height;
+        const pixelRatio = window.devicePixelRatio || 1;
+
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = deviceWidth * pixelRatio;
+        canvas.height = deviceHeight * pixelRatio;
+
+        ctx.fillStyle = '#0f0f0f'; // Dark obsidian theme default
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        const iconImage = new Image();
+        iconImage.src = 'apple-touch-icon.png';
+        iconImage.onload = function () {
+            const size = 120 * pixelRatio;
+            const x = (canvas.width - size) / 2;
+            const y = (canvas.height - size) / 2;
+            ctx.drawImage(iconImage, x, y, size, size);
+
+            const imageDataURL = canvas.toDataURL('image/png');
+            const appleTouchStartupImageLink = document.createElement('link');
+            appleTouchStartupImageLink.setAttribute('rel', 'apple-touch-startup-image');
+            appleTouchStartupImageLink.setAttribute('href', imageDataURL);
+            document.head.appendChild(appleTouchStartupImageLink);
+        };
+    });
+    </script>
+
+    <!-- Mini Player Logic Integrations -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const btns = document.querySelectorAll('.yt-play-pill[data-aid]');
+        let caudio = null;
+        let activePlayBtn = null;
+        
+        const fpBtn = document.querySelector('#floating_player #playpausebutton');
+        const miniProgressFill = document.getElementById('mini-progress-fill');
+        const currentThumb = document.getElementById('player-current-thumb');
+        const playerSub = document.getElementById('player-subtitle');
+        const seekbar = document.getElementById('seekbar');
+
+        fpBtn.addEventListener('click', function() {
+            togglePP();
+        });
+
+        function togglePP() {
+            if (caudio) {
+                if (caudio.paused) {
+                    caudio.play();
+                } else {
+                    caudio.pause();
+                }
+            }
+        }
+
+        seekbar.addEventListener('input', function() {
+            if (caudio) {
+                const seekTime = (seekbar.value / 100) * caudio.duration;
+                caudio.currentTime = seekTime;
+            }
+        });
+
+        const speeds = [1, 1.25, 1.5, 1.75, 2];
+        let currentSpeedIndex = 0;
+        document.getElementById('speed').addEventListener('click', () => {
+            if (!caudio) return;
+            currentSpeedIndex = (currentSpeedIndex + 1) % speeds.length;
+            const speed = speeds[currentSpeedIndex];
+            caudio.playbackRate = speed;
+            document.getElementById('speed').innerText = speed + 'x';
+        });
+
+        document.getElementById('plus30').addEventListener('click', () => {
+            if (caudio) {
+                caudio.currentTime += 30;
+            }
+        });
+
+        function updateAudioTime() {
+            if (!caudio) return;
+            const currentTime = caudio.currentTime;
+            const duration = caudio.duration || 1;
+            const progress = (currentTime / duration) * 100;
+            
+            // Sync Seekbars
+            seekbar.value = progress;
+            miniProgressFill.style.width = progress + '%';
+
+            // Sync Timeline numbers
+            document.getElementById('current_time').textContent = formatTime(currentTime);
+            document.getElementById('duration').textContent = formatTime(duration);
+        }
+
+        function playTime() {
+            fpBtn.classList.add('playing');
+            if (activePlayBtn) activePlayBtn.classList.add('playing');
+        }
+
+        function pauseTime() {
+            fpBtn.classList.remove('playing');
+            if (activePlayBtn) activePlayBtn.classList.remove('playing');
+        }
+
+        function formatTime(time) {
+            if (isNaN(time)) return '00:00';
+            const minutes = Math.floor(time / 60);
+            const seconds = Math.floor(time % 60);
+            return ('0' + minutes).slice(-2) + ':' + ('0' + seconds).slice(-2);
+        }
+
+        // Attach podcast pill event listeners
+        btns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                const aid = this.getAttribute('data-aid');
+                const audioElem = document.querySelector('audio[aid="' + aid + '"]');
+                changePlayback(audioElem, this);
+            });
+        });
+
+        function changePlayback(audioElem, clickTarget) {
+            const prevPlayBtn = activePlayBtn;
+            activePlayBtn = clickTarget;
+            
+            if (caudio && caudio !== audioElem) {
+                caudio.removeEventListener('timeupdate', updateAudioTime);
+                caudio.removeEventListener('play', playTime);
+                caudio.removeEventListener('pause', pauseTime);
+                caudio.pause();
+                
+                if (prevPlayBtn) prevPlayBtn.classList.remove('playing');
+                fpBtn.classList.remove('playing');
+                miniProgressFill.style.width = '0%';
+            }
+
+            caudio = audioElem;
+            caudio.addEventListener('timeupdate', updateAudioTime);
+            caudio.addEventListener('play', playTime);
+            caudio.addEventListener('pause', pauseTime);
+
+            if (caudio.paused) {
+                startPlayback();
+            } else {
+                caudio.pause();
+            }
+        }
+
+        function startPlayback() {
+            const fp = document.querySelector('#floating_player');
+            const closestPost = caudio.closest('.post');
+            
+            document.querySelectorAll('.post.nowplaying').forEach(e => e.classList.remove('nowplaying'));
+            closestPost.classList.add('nowplaying');
+
+            const titleText = closestPost.querySelector('.yt-title').textContent;
+            const channelText = closestPost.querySelector('.yt-channel-name').textContent;
+            const thumbImgSrc = closestPost.querySelector('.yt-thumbnail')?.src || 'favicon.png';
+
+            document.getElementById('title').textContent = titleText;
+            playerSub.textContent = channelText;
+            currentThumb.src = thumbImgSrc;
+            currentThumb.style.display = 'block';
+
+            fp.classList.add("show");
+            caudio.play();
+
+            document.getElementById('speed').innerText = caudio.playbackRate + 'x';
+            
+            // Sync with Native Device lock-screens & notifications via MediaSession API
+            if ('mediaSession' in navigator) {
+                navigator.mediaSession.metadata = new MediaMetadata({
+                    title: titleText,
+                    artist: channelText,
+                    album: "rssTea Podcast",
+                    artwork: [{ src: thumbImgSrc }]
+                });
+
+                const totalAids = document.querySelectorAll('[data-aid]').length;
+                let nextAid = Math.floor(caudio.getAttribute('aid')) + 1;
+                let prevAid = Math.floor(caudio.getAttribute('aid')) - 1;
+                if (nextAid > totalAids - 1) { nextAid = 0; }
+                if (prevAid < 0) { prevAid = totalAids - 1; }
+
+                navigator.mediaSession.setActionHandler('nexttrack', () => {
+                    const nextBtn = document.querySelector(`.yt-play-pill[data-aid="${nextAid}"]`);
+                    if (nextBtn) nextBtn.click();
+                });
+                navigator.mediaSession.setActionHandler('previoustrack', () => {
+                    const prevBtn = document.querySelector(`.yt-play-pill[data-aid="${prevAid}"]`);
+                    if (prevBtn) prevBtn.click();
+                });
+            }
+        }
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+name: Fetch new feeds and push content to Github Pages
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - 'feeds.php'
+      - 'base.html'
+  schedule:
+    - cron: '0 */2 * * *'  # Runs every 2 hours to keep your feeds fresh!
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Preserve old feed.json for change detection
+        run: |
+          if [ -f feed.json ]; then
+            cp feed.json old_feed.json
+            echo "Successfully preserved old feed.json."
+          else
+            echo "[]" > old_feed.json
+            echo "No existing feed.json found; created a clean baseline."
+          fi
+      
+      - name: Run feeds.php
+        run: php feeds.php
+      
+      - name: Commit files
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          # Clean up the comparison cache so it is not committed to git
+          rm -f old_feed.json
+          git add --all
+          git commit -m "Updating the repository with fresh feeds" || echo "No changes to commit"
+      
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          force: true
+      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './public'
+      
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
